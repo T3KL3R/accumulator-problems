@@ -682,7 +682,7 @@ function some(array, val) {
 CHALLENGE
 ----------------------------------------
 
-Write a function named some that takes an array and returns a string with the elements joined by commas, with a trailing 'and'
+Write a function named toSentence that takes an array and returns a string with the elements joined by commas, with a trailing 'and'
 
 Example:
 
@@ -690,13 +690,28 @@ If you pass ["Sue", "Will"] it should return "Sue and Will"
 If you pass ["Sue", "Will", "Rachel"] it should return "Sue, Will and Rachel"
 */
 
+function toSentence(array) {
 
+    var returnString = "";
 
+    for (var i = 0; i < array.length; i++) {
+        returnString += array[i];
 
+        switch (i) {
+            case array.length - 1:
+                break;
+            case array.length - 2:
+                returnString += " and ";
+                break;
+            default:
+                returnString += ", ";
+                break;
+        };
+    };
 
+    return returnString;
 
-
-
+};
 
 /*
 ----------------------------------------
@@ -711,11 +726,17 @@ If you pass ["Sue", "Will"] it should return "SW"
 If you pass ["Java", Script", "Object", "Notation"] it should return "JSON"
 */
 
+function acronym(array) {
 
+    var returnString = "";
 
+    for (var i = 0; i < array.length; i++) {
+        returnString += array[i].substr(0, 1);
+    };
 
+    return returnString;
 
-
+};
 
 
 /*
@@ -730,15 +751,22 @@ Example:
 If you pass [0,-3,2,5] it should return -3
 */
 
+function min(array) {
+
+    var minVal = array[0];
+
+    for (var i = 1; i < array.length; i++) {
+        if (array[i] < minVal) {
+            minVal = array[i];
+        };
+    };
+
+    return minVal;
+
+};
 
 
-
-
-
-
-
-
-/*
+/* 32
 ----------------------------------------
 CHALLENGE
 ----------------------------------------
@@ -751,10 +779,11 @@ If you pass [{id: 1, name: "Joe"}, {id: 2, name: "Sue"}] it should return {1: {i
 
 */
 
+function index(array, property) {
 
 
 
-
+};
 
 
 
