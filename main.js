@@ -766,7 +766,7 @@ function min(array) {
 };
 
 
-/* 32
+/*
 ----------------------------------------
 CHALLENGE
 ----------------------------------------
@@ -781,13 +781,18 @@ If you pass [{id: 1, name: "Joe"}, {id: 2, name: "Sue"}] it should return {1: {i
 
 function index(array, property) {
 
+    var objectReturn = {};
 
+    for (var i in array) {
+        objectReturn[array[i][property]] = array[i];
+    };
+    return objectReturn;
 
 };
 
 
 
-/*
+/* 33
 ----------------------------------------
 CHALLENGE
 ----------------------------------------
@@ -799,11 +804,17 @@ Example:
 If you pass {id: 1, name: "Joe"} it should return {1: "id", Joe: "name"}
 */
 
+function invert(object) {
 
+    var objectReturn = {};
 
+    for (var key in object) {
+        objectReturn[object[key]] = key;
+    };
 
+    return objectReturn;
 
-
+};
 
 
 /*
@@ -821,11 +832,16 @@ Example:
 If you pass {"contract": "foo"}, "Fred" it should return {"contract-signed": "foo - Fred"}
 */
 
+function addSignature(name, object) {
 
+    var objectReturn = {};
 
+    for (var key in object) {
+        objectReturn[key + "-signed"] = object[key] + " - " + name;
+    };
 
-
-
+    return objectReturn;
+};
 
 
 /*
@@ -840,11 +856,19 @@ Example:
 If you pass {name: "Will", age: 24} it should return ["name - will", "age - 24"]
 */
 
+function pairs(object) {
 
+    var arrayReturn = Object.keys(object);
+    var arrayI = 0;
 
+    for (var key in object) {
+        arrayReturn[arrayI] += " - " + object[key];
+        arrayI++;
+    };
 
+    return arrayReturn;
 
-
+};
 
 
 /*
@@ -859,10 +883,17 @@ Example:
 If you pass {a: 1, b: 2} it should return 3
 */
 
+function sumValues(object) {
 
+    var sumReturn = 0;
 
+    for (var key in object) {
+        sumReturn += object[key];
+    };
 
+    return sumReturn;
 
+};
 
 
 
@@ -878,12 +909,20 @@ Example:
 If you pass {1999: 4036, 2000: 7654} it should return '2000'
 */
 
+function biggestProperty(object) {
 
+    var memVal = 0;
+    var memKey;
 
+    for (var key in object) {
+        if (object[key] > memVal) {
+            memKey = key;
+            memVal = object[key];
+        };
+    };
+    return memKey;
 
-
-
-
+};
 
 
 /*
@@ -898,12 +937,14 @@ Example:
 If you pass {1999: 4036, 2000: 7654} and 4036, it should return '1999'
 */
 
+function keyForValue(object, value) {
 
-
-
-
-
-
+    for (var key in object) {
+        if (object[key] === value) {
+            return key;
+        };
+    };
+};
 
 
 /*
@@ -917,6 +958,55 @@ Example:
 
 If you pass {1999: 4036, 2000: 7654} and 4036, it should return true
 */
+
+function containsValue(object, value) {
+
+    for (var key in object) {
+        if (object[key] === value) {
+            return true;
+        };
+    };
+    return false;
+};
+
+
+//*/
+
+
+
+
+
+
+
+
+
+/*
+n true
+    *
+    /
+
+
+
+
+
+
+
+
+
+//*/
+
+
+
+
+
+
+
+
+
+/*
+n true
+    *
+    /
 
 
 
